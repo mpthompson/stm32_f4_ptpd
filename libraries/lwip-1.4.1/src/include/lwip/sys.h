@@ -107,6 +107,24 @@ typedef void (*lwip_thread_fn)(void *arg);
 
 #else /* LWIP_COMPAT_MUTEX */
 
+/** Create a new timer
+ * @param timer pointer to the timer to create
+ * @param ptimer pointer to timer callback function
+ * @param type timer type
+ * @param argument generic argument type
+ * @return a new mutex */
+err_t sys_timer_new(sys_timer_t *timer, os_ptimer ptimer, os_timer_type type, void *argument);
+/** Start or restart a timer
+ * @param timer the timer to start
+ * @param millisec the value of the timer */
+void sys_timer_start(sys_timer_t *timer, uint32_t millisec);
+/** Stop a timer
+ * @param timer the timer to stop */
+void sys_timer_stop(sys_timer_t *timer);
+/** Delete a timer
+ * @param timer the timer to delete */
+void sys_timer_free(sys_timer_t *timer); 
+
 /** Create a new mutex
  * @param mutex pointer to the mutex to create
  * @return a new mutex */

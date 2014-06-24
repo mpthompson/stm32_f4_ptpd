@@ -226,6 +226,14 @@ typedef struct {
                                                              This parameter can be a value of @ref ETH_DMA_Arbitration */  
 }ETH_InitTypeDef;
 
+/** 
+  * @brief  ETH time stamp definition
+  */ 
+typedef struct {
+  uint32_t TimeStampLow;
+  uint32_t TimeStampHigh;
+} ETH_TimeStamp;
+
 /**--------------------------------------------------------------------------**/
 /** 
   * @brief                           DMA descriptors types
@@ -1778,7 +1786,6 @@ FlagStatus ETH_GetSoftwareResetStatus(void);
 void  ETH_Start(void);
 uint32_t ETH_GetRxPktSize(ETH_DMADESCTypeDef *DMARxDesc);
 
-
 #ifdef USE_ENHANCED_DMA_DESCRIPTORS
  void ETH_EnhancedDescriptorCmd(FunctionalState NewState);
 #endif /* USE_ENHANCED_DMA_DESCRIPTORS */
@@ -1814,6 +1821,7 @@ void ETH_DMARxDescChainInit(ETH_DMADESCTypeDef *DMARxDescTab, uint8_t *RxBuff, u
 void ETH_DMATxDescChainInit(ETH_DMADESCTypeDef *DMATxDescTab, uint8_t* TxBuff, uint32_t TxBuffCount);
 uint32_t ETH_CheckFrameReceived(void);
 uint32_t ETH_Prepare_Transmit_Descriptors(u16 FrameLength);
+uint32_t ETH_Prepare_Transmit_Descriptors_TimeStamp(u16 FrameLength, ETH_TimeStamp *TimeStamp);
 FrameTypeDef ETH_Get_Received_Frame(void);
 FlagStatus ETH_GetDMATxDescFlagStatus(ETH_DMADESCTypeDef *DMATxDesc, uint32_t ETH_DMATxDescFlag);
 uint32_t ETH_GetDMATxDescCollisionCount(ETH_DMADESCTypeDef *DMATxDesc);
@@ -1884,6 +1892,22 @@ void ETH_MMCCountersReset(void);
 void ETH_MMCITConfig(uint32_t ETH_MMC_IT, FunctionalState NewState);
 ITStatus ETH_GetMMCITStatus(uint32_t ETH_MMC_IT);
 uint32_t ETH_GetMMCRegister(uint32_t ETH_MMCReg);
+
+/** 
+  * @brief  PTP  
+  */ 
+void ETH_EnablePTPTimeStampAddend(void);
+void ETH_EnablePTPTimeStampInterruptTrigger(void);
+void ETH_EnablePTPTimeStampUpdate(void);
+void ETH_InitializePTPTimeStamp(void);
+void ETH_PTPUpdateMethodConfig(uint32_t UpdateMethod);
+void ETH_PTPTimeStampCmd(FunctionalState NewState);
+FlagStatus ETH_GetPTPFlagStatus(uint32_t ETH_PTP_FLAG);
+void ETH_SetPTPSubSecondIncrement(uint32_t SubSecondValue);
+void ETH_SetPTPTimeStampUpdate(uint32_t Sign, uint32_t SecondValue, uint32_t SubSecondValue);
+void ETH_SetPTPTimeStampAddend(uint32_t Value);
+void ETH_SetPTPTargetTime(uint32_t HighValue, uint32_t LowValue);
+uint32_t ETH_GetPTPRegister(uint32_t ETH_PTPReg);
 
 #ifdef __cplusplus
 }

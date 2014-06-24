@@ -844,6 +844,7 @@ tcp_send_empty_ack(struct tcp_pcb *pcb)
   struct pbuf *p;
   struct tcp_hdr *tcphdr;
   u8_t optlen = 0;
+	(void)tcphdr;
 
 #if LWIP_TCP_TIMESTAMPS
   if (pcb->flags & TF_TIMESTAMP) {
@@ -1365,6 +1366,7 @@ tcp_keepalive(struct tcp_pcb *pcb)
 {
   struct pbuf *p;
   struct tcp_hdr *tcphdr;
+	(void)tcphdr;
 
   LWIP_DEBUGF(TCP_DEBUG, ("tcp_keepalive: sending KEEPALIVE probe to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
                           ip4_addr1_16(&pcb->remote_ip), ip4_addr2_16(&pcb->remote_ip),
