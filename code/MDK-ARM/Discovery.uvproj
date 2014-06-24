@@ -361,7 +361,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx USE_STDPERIPH_DRIVER __CORTEX_M4F __FPU_PRESENT __CMSIS_RTOS</Define>
               <Undefine></Undefine>
-              <IncludePath>..\inc;..\src;..\..\libraries\CMSIS\Include;..\..\libraries\STM32F4x7_ETH_Driver\inc;..\..\libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\libraries\STM32F4-Discovery;..\..\libraries\lwip-1.4.1\port\STM32F4x7;..\..\libraries\lwip-1.4.1\src\include;..\..\libraries\lwip-1.4.1\src\include\ipv4;..\..\libraries\lwip-1.4.1\src\include\lwip;..\..\libraries\lwip-1.4.1\src\include\netif;..\..\libraries\lwip-1.4.1\port\STM32F4x7\arch;..\..\libraries\rtx-v4.73\INC;..\..\libraries\rtx-v4.73\SRC;..\..\libraries\ptpd-2.0.0\src</IncludePath>
+              <IncludePath>..\inc;..\src;..\..\libraries\CMSIS\Include;..\..\libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\libraries\STM32F4x7_ETH_Driver\inc;..\..\libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\libraries\STM32F4-Discovery;..\..\libraries\lwip-1.4.1\port\STM32F4x7;..\..\libraries\lwip-1.4.1\src\include;..\..\libraries\lwip-1.4.1\src\include\ipv4;..\..\libraries\lwip-1.4.1\src\include\lwip;..\..\libraries\lwip-1.4.1\src\include\netif;..\..\libraries\lwip-1.4.1\port\STM32F4x7\arch;..\..\libraries\rtx-v4.73\INC;..\..\libraries\rtx-v4.73\SRC;..\..\libraries\ptpd-2.0.0\src</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
