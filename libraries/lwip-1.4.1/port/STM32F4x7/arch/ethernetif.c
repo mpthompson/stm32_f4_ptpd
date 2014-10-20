@@ -370,12 +370,18 @@ void ethernetif_input(void * pvParameters)
   {
 		if (sys_arch_sem_wait(&s_xRxSemaphore, emacBLOCK_TIME_WAITING_FOR_INPUT) != SYS_ARCH_TIMEOUT)
     {
-      p = low_level_input(s_pxNetIf);
-      if (s_pxNetIf->input(p, s_pxNetIf) != ERR_OK)
-      {
-        pbuf_free(p);
-        p=NULL;
-      }
+			do
+			{
+				p = low_level_input(s_pxNetIf);
+				if (p != NULL)
+				{
+					if (s_pxNetIf->input(p, s_pxNetIf) != ERR_OK)
+					{
+						pbuf_free(p);
+						p=NULL;
+					}
+				}
+			} while (p != NULL);			
     }
   }
 }  
